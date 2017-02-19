@@ -3,8 +3,8 @@ hive.metastore.uri=thrift://<%= @hive_metastore_endpoint %>
 hive.config.resources=<%= node.apache_hadoop.conf_dir %>/core-site.xml,<%= node.apache_hadoop.conf_dir %>/hdfs-site.xml
 -DHADOOP_USER_NAME=glassfish
 hive.force-local-scheduling=<%= node.presto.hive.force_local_scheduling %>
-hive.max-partitions-per-writers=<%= node.hive.max_partitions_per_writers %>
-hive.metastore.authentication.type=<%= node.hive.metastore.authentication.type %>
-hive.hdfs.authentication.type=<%= node.hive.hdfs.authentication.type %>
+hive.max-partitions-per-writers=<%= node.presto.hive.max_partitions_per_writers %>
+hive.metastore.authentication.type=<%= node.presto.hive.metastore.authentication.type %>
+hive.hdfs.authentication.type=<%= node.presto.hive.hdfs.authentication.type %>
 hive.hdfs.impersonation.enabled=<%= node.presto.hive.hdfs.impersonation.enabled %>
 hive.security=legacy

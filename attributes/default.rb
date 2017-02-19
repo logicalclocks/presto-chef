@@ -10,14 +10,14 @@ default.presto.version                 = "0.166"
 default.presto.url                     = "#{node.download_url}/presto-server-#{node.presto.version}.tar.gz"
 default.presto.http.port               = "18080"
 default.presto.dir                     = "/srv"
-default.presto.home                    = node.presto.dir + "/presto-server-" + node.presto.version + "-bin"
+default.presto.home                    = node.presto.dir + "/presto-server-" + node.presto.version
 default.presto.base_dir                = node.presto.dir + "/presto-server"
 default.presto.data_dir                = node.presto.dir + "/presto-data" 
 default.presto.keystore                = node.kagent.keystore
 default.presto.keystore_password       = node.kagent.keystore_password
 
 
-default.presto.coordinator                        = true
+default.presto.role                               = "localhost"
 default.presto.node_scheduler.include_coordinator = "false"
 default.presto.jvm.max_heap_size                  = "1G"
 default.presto.jvm.max_heap_size                  = "1G"
@@ -48,7 +48,7 @@ default.presto.hive.hdfs.impersonation.enabled           = "true"
 
 
 
-default.presto.coordinator.public_ips                   = [''] 
+#default.presto.coordinator.public_ips                   = [''] 
+#default.presto.worker.public_ips                        = ['']
 default.presto.coordinator.private_ips                  = [''] 
-default.presto.worker.public_ips                        = ['']
 default.presto.worker.private_ips                       = ['']

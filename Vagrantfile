@@ -307,7 +307,7 @@ Vagrant.configure("2") do |c|
       chef.add_recipe "hops::jhs"
       chef.add_recipe "kzookeeper::default"
       chef.add_recipe "hive2::default"
-      chef.add_recipe "presto::default"
+      chef.add_recipe "presto::localhost"
   end 
 
 end

@@ -23,6 +23,7 @@ recipe           "coordinator", "Starts  a Presto Coordinator"
 recipe           "worker", "Starts  a Presto Worker"
 recipe           "localhost", "Starts  a Presto Localhost setup (Coordinator and Worker)"
 recipe           "purge", "Removes and deletes an installed Hive Server"
+recipe           "_config", "Subrecipe"
 
 attribute "java/jdk_version",
           :description =>  "Jdk version",
@@ -41,19 +42,19 @@ attribute "presto/dir",
           :type => 'string'
 
 attribute "presto/version",
-          :dscription => "hive version",
+          :dscription => "presto version",
           :type => "string"
 
 attribute "presto/url",
-          :dscription => "hive download url",
+          :dscription => "presto download url",
           :type => "string"
 
-attribute "presto/port",
-          :dscription => "hive.port",
+attribute "presto/http/port",
+          :dscription => "presto http port",
           :type => "string"
 
 attribute "presto/home",
-          :dscription => "hive.home",
+          :dscription => "presto installation directory",
           :type => "string"
 
 attribute "presto/keystore",

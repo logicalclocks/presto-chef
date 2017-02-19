@@ -58,9 +58,7 @@ file "#{node.presto.base_dir}/etc/config.properties" do
   action :delete
 end
 
-if node.presto.coordinator == "coordinator"
-
-
+if node.presto.role == "coordinator"
   template "#{node.presto.base_dir}/etc/config.properties" do
     source "config-coordinator.properties.erb"
     owner node.presto.user
@@ -70,8 +68,7 @@ if node.presto.coordinator == "coordinator"
                 :private_ip => my_ip
               })
   end
-else if node.presto.coordinator == "worker"
-
+elsif node.presto.role == "worker"
   template "#{node.presto.base_dir}/etc/config.properties" do
     source "config-worker.properties.erb"
     owner node.presto.user
@@ -81,8 +78,7 @@ else if node.presto.coordinator == "worker"
                 :private_ip => my_ip
               })
   end
-
-else
+elsif node.presto.role == "localhost"
   template "#{node.presto.base_dir}/etc/config.properties" do
     source "config-localhost.properties.erb"
     owner node.presto.user
@@ -92,7 +88,8 @@ else
                 :private_ip => my_ip
               })
   end
-  
+else
+  raise "Undefined role: #{node.presto.role}. You should set presto.role to one of 'coordinator', 'worker', or 'localhost'"
 end
 
 file "#{node.presto.base_dir}/etc/log.properties" do
