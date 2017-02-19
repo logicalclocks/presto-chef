@@ -6,3 +6,29 @@ query.max-memory-per-node=<%= node.presto.query.max_memory_per_node %>
 discovery-server.enabled=<%= node.presto.discovery_server.enabled %>
 discovery.uri=http://<%= @my_ip %>:<%= node.presto.http.port %>
 jmx.rmiserver.port=<%= node.presto.rmiport %>
+
+
+exchange.http-client.max-connections=1000
+exchange.http-client.max-connections-per-server=1000
+exchange.http-client.connect-timeout=1m
+exchange.http-client.idle-timeout=1m
+
+scheduler.http-client.max-connections=1000
+scheduler.http-client.max-connections-per-server=1000
+scheduler.http-client.connect-timeout=1m
+scheduler.http-client.idle-timeout=1m
+
+query.client.timeout=5m
+query.min-expire-age=30m
+
+# plugin.bundles=\
+#   ../presto-blackhole/pom.xml,\
+#   ../presto-jmx/pom.xml,\
+#   ../presto-raptor/pom.xml,\
+#   ../presto-hive-hadoop2/pom.xml,\
+#   ../presto-example-http/pom.xml,\
+#   ../presto-kafka/pom.xml, \
+#   ../presto-tpch/pom.xml, \
+#   ../presto-local-file/pom.xml, \
+#   ../presto-mysql/pom.xml,\
+#   ../presto-postgresql/pom.xml

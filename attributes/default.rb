@@ -29,7 +29,7 @@ default.presto.discovery_server.enabled           = "true"
 default.presto.mysql_user              = "presto"
 default.presto.mysql_password          = "presto"
 
-default.presto.pid_file                = "/tmp/prestodb.pid"
+default.presto.pid_file                = node.presto.data_dir + "/var/run/launcher.pid"
 default.presto.log                     = "#{node.presto.base_dir}/presto.log"
 default.presto.systemd                 = "true"
 

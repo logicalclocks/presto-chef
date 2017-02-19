@@ -79,3 +79,10 @@ directory node.presto.base_dir + "/etc/catalog" do
   action :create
   not_if { File.directory?("#{node.presto.base_dir}/etc/catalog") }
 end
+
+template "/etc/security/limits.d/presto.conf" do
+  source "presto.conf.erb"
+  owner "root"
+  group "root"
+  mode 0754
+end

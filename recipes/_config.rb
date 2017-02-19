@@ -22,13 +22,6 @@ magic_shell_environment 'PATH' do
   value "$PATH:#{node.apache_hadoop.base_dir}/bin:#{node.presto.base_dir}/bin"
 end
 
-cookbook_file "#{node.presto.base_dir}/lib/mysql-connector-java-5.1.40-bin.jar" do
-  source "mysql-connector-java-5.1.40-bin.jar"
-  owner node.presto.user
-  group node.apache_hadoop.group
-  mode "0644"
-end
-
 file "#{node.presto.base_dir}/etc/node.properties" do
   action :delete
 end
@@ -53,6 +46,18 @@ template "#{node.presto.base_dir}/etc/jvm.config" do
   group node.presto.group
   mode 0655
 end
+
+# file "#{node.presto.base_dir}/bin/launcher.properties" do
+#   action :delete
+# end
+
+# template "#{node.presto.base_dir}/bin/launcher.properties" do
+#   source "jvm.config.erb"
+#   owner node.presto.user
+#   group node.presto.group
+#   mode 0655
+# end
+
 
 file "#{node.presto.base_dir}/etc/config.properties" do
   action :delete
@@ -226,7 +231,8 @@ end
 if node.kagent.enabled == "true" 
   kagent_config service_name do
     service service_name
-    log_file node.presto.log
+    log_file "#{node.presto.data_dir}/var/log/server.log"
+#    log_file2 "#{node.presto.data_dir}/var/log/launcher.log"    
   end
 end
 
