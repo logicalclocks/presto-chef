@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# No "set -e" here, as the kill -0 on the pid might fail
 export HADOOP_HOME=<%= node.apache_hadoop.base_dir %>
 
 PID_FILE=<%= node.presto.pid_file %>
@@ -13,21 +13,5 @@ if [ -f $PID_FILE ] ; then
 fi
 
 
-nohup <%= node.presto.base_dir %>/bin/launcher start 2>&1 > <%= node.presto.log %> &
-echo $! > $PID_FILE
+<%= node.presto.base_dir %>/bin/launcher start
 
-PID=`cat $PID_FILE`
-
-wait_pid_started=5
-timeout=0
-while [ $timeout -lt $wait_pid_started ] ; do
-    sleep 1
-    (kill -0 $PID) 2> /dev/null && break
-    echo -n "."
-    timeout=`expr $timeout + 1`
-done
-if [ $timeout -eq $wait_pid_started ] ; then
-  exit 1
-fi
-
-exit 0
