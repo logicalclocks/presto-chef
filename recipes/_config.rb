@@ -135,7 +135,7 @@ template "#{node.presto.base_dir}/etc/catalog/hive.properties" do
   })
 end
 
-file "#{node.presto.base_dir}/etc/node.properties" do
+file "#{node.presto.base_dir}/etc/catalog/mysql.properties" do
   action :delete
 end
 
@@ -248,8 +248,8 @@ end
 if node.kagent.enabled == "true" 
   kagent_config service_name do
     service service_name
-    log_file "#{node.presto.data_dir}/var/log/server.log"
-#    log_file2 "#{node.presto.data_dir}/var/log/launcher.log"    
+    log_file node.presto.log
+#    log_file2 "#{node.presto.base_dir}/var/log/launcher.log"    
   end
 end
 

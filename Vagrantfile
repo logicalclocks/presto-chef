@@ -287,6 +287,9 @@ Vagrant.configure("2") do |c|
      "cuda" => {
 	  "enabled": "false",
      },
+     "services" => {
+	  "enabled": "true",
+     },
      "vagrant" => "true",
      }
 

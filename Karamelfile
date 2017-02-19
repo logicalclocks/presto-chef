@@ -4,4 +4,4 @@ dependencies:
     global:  
       - hops::dn
       - hops::nm
-      - hive2::default
+      - hive2::metastore

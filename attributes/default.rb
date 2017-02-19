@@ -30,7 +30,7 @@ default.presto.mysql_user              = "presto"
 default.presto.mysql_password          = "presto"
 
 default.presto.pid_file                = node.presto.data_dir + "/var/run/launcher.pid"
-default.presto.log                     = "#{node.presto.base_dir}/presto.log"
+default.presto.log                     = "#{node.presto.data_dir}/var/log/server.log"
 default.presto.systemd                 = "true"
 
 default.presto.rmiport                 = "50333"
