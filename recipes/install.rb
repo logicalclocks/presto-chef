@@ -86,3 +86,12 @@ template "/etc/security/limits.d/presto.conf" do
   group "root"
   mode 0754
 end
+
+
+cookbook_file "#{node.presto.base_dir}/lib/#{node.presto.jdbc_driver}" do
+  source node.presto.jdbc_driver
+  owner node.presto.user
+  group node.presto.group
+  mode "0644"
+end
+

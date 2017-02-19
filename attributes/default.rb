@@ -26,6 +26,7 @@ default.presto.query.max_memory_per_node          = "1GB"
 default.presto.discovery_server.enabled           = "true"
 
 
+default.presto.jdbc_driver             = "presto-jdbc-" + node.presto.version + ".jar"
 default.presto.mysql_user              = "presto"
 default.presto.mysql_password          = "presto"
 
