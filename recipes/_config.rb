@@ -3,6 +3,8 @@ include_recipe "hops::wrap"
 my_ip = my_private_ip()
 nn_endpoint = private_recipe_ip("apache_hadoop", "nn") + ":#{node.apache_hadoop.nn.port}"
 
+mysql_endpoint = private_recipe_ip("ndb", "mysqld") + ":#{node.ndb.mysql_port}"
+
 hive_metastore_endpoint = private_recipe_ip("hive2", "metastore") + ":9803"
 
 zk_ips = private_recipe_ips('kzookeeper', 'default')
@@ -132,6 +134,21 @@ template "#{node.presto.base_dir}/etc/catalog/hive.properties" do
       :hive_metastore_endpoint => hive_metastore_endpoint
   })
 end
+
+file "#{node.presto.base_dir}/etc/node.properties" do
+  action :delete
+end
+
+template "#{node.presto.base_dir}/etc/catalog/mysql.properties" do
+  source "mysql.properties.erb"
+  owner node.presto.user
+  group node.presto.group
+  mode 0655
+  variables({ 
+              :mysql_endpoint => mysql_endpoint,
+            })
+end
+
 
 
 template "#{node.presto.base_dir}/bin/start-presto.sh" do
