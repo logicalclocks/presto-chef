@@ -1,0 +1,16 @@
+[Unit]
+Description = PrestoDB on Hadoop
+After = syslog.target network.target remote-fs.target
+
+[Service]
+User = <%= node.presto.user %>
+
+PIDFile = <%= node.presto.pid_file %>
+ExecStart = <%= node.presto.base_dir %>/bin/start-presto.sh
+ExecStop = <%= node.presto.base_dir %>/bin/stop-presto.sh
+LimitNOFILE = 60000
+
+Type = forking
+
+[Install]
+WantedBy = multi-user.target

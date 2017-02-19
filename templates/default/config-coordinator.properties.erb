@@ -1,0 +1,8 @@
+coordinator=true
+node-scheduler.include-coordinator=<%= node.presto.node_scheduler.include_coordinator %>
+http-server.http.port=<%= node.presto.http.port %>
+query.max-memory=<%= node.presto.query.max_memory %>
+query.max-memory-per-node=<%= node.presto.query.max_memory_per_node %>
+discovery-server.enabled=<%= node.presto.discovery_server.enabled %>
+discovery.uri=http://<%= @my_ip %>:<%= node.presto.http.port %>
+jmx.rmiserver.port=<%= node.presto.rmiport %>

@@ -1,0 +1,6 @@
+coordinator=false
+http-server.http.port=<%= node.presto.http.port %>
+query.max-memory=<%= node.presto.query.max_memory %>
+query.max-memory-per-node=<%= node.presto.query.max_memory_per_node %>
+discovery.uri=http://<%= @my_ip %>:<%= node.presto.http.port %>
+jmx.rmiserver.port=<%= node.presto.rmiport %>

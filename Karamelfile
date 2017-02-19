@@ -1,0 +1,7 @@
+dependencies: 
+  - recipe: presto::install
+  - recipe: presto::default
+    global:  
+      - hops::dn
+      - hops::nm
+      - hive2::default
