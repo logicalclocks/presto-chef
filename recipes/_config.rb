@@ -5,7 +5,7 @@ nn_endpoint = private_recipe_ip("apache_hadoop", "nn") + ":#{node.apache_hadoop.
 
 mysql_endpoint = private_recipe_ip("ndb", "mysqld") + ":#{node.ndb.mysql_port}"
 
-hive_metastore_endpoint = private_recipe_ip("hive2", "metastore") + ":9803"
+hive_metastore_endpoint = private_recipe_ip("hive2", "metastore") + ":#{node.hive2.metastore.port}"
 
 zk_ips = private_recipe_ips('kzookeeper', 'default')
 zk_endpoints = zk_ips.join(",")
