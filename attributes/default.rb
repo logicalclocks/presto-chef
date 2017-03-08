@@ -4,8 +4,8 @@ include_attribute "hops"
 include_attribute "kzookeeper"
 include_attribute "hive2"
 
-default.presto.user                    = "presto"
-default.presto.group                   = node.hops.group
+default.presto.user                    = node.install.user.empty? ? "presto" : node.install.user
+default.presto.group                   = node.install.user.empty? ? node.hops.group : node.install.user
 default.presto.version                 = "0.166"
 default.presto.url                     = "#{node.download_url}/presto-server-#{node.presto.version}.tar.gz"
 default.presto.http.port               = "18080"
