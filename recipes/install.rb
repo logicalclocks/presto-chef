@@ -26,7 +26,6 @@ directory node.presto.data_dir do
   group node.presto.group
   mode "750"
   action :create
-  recursive true
   not_if { File.directory?("#{node.presto.data_dir}") }
 end
 
