@@ -21,6 +21,16 @@ group node.presto.group do
   append true
 end
 
+
+directory node.presto.dir do
+  owner node.hops.hdfs.user
+  group node.hops.group
+  mode "775"
+  action :create
+  not_if { File.directory?("#{node.presto.dir}") }
+end
+
+
 directory node.presto.data_dir do
   owner node.presto.user
   group node.presto.group
