@@ -1,4 +1,3 @@
-include_recipe "hops::wrap"
 
 my_ip = my_private_ip()
 nn_endpoint = private_recipe_ip("hops", "nn") + ":#{node.hops.nn.port}"
