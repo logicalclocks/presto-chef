@@ -1,6 +1,6 @@
 #!/bin/bash
 # No "set -e" here, as the kill -0 on the pid might fail
-export HADOOP_HOME=<%= node.apache_hadoop.base_dir %>
+export HADOOP_HOME=<%= node.hops.base_dir %>
 
 PID_FILE=<%= node.presto.pid_file %>
 if [ -f $PID_FILE ] ; then

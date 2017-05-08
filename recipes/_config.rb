@@ -1,7 +1,7 @@
 include_recipe "hops::wrap"
 
 my_ip = my_private_ip()
-nn_endpoint = private_recipe_ip("apache_hadoop", "nn") + ":#{node.apache_hadoop.nn.port}"
+nn_endpoint = private_recipe_ip("hops", "nn") + ":#{node.hops.nn.port}"
 
 mysql_endpoint = private_recipe_ip("ndb", "mysqld") + ":#{node.ndb.mysql_port}"
 
@@ -13,7 +13,7 @@ zk_endpoints = zk_ips.join(",")
 home = "/user/" + node.presto.user
 
 magic_shell_environment 'HADOOP_HOME' do
-  value "#{node.apache_hadoop.base_dir}"
+  value "#{node.hops.base_dir}"
 end
 
 magic_shell_environment 'PRESTO_HOME' do
@@ -21,7 +21,7 @@ magic_shell_environment 'PRESTO_HOME' do
 end
 
 magic_shell_environment 'PATH' do
-  value "$PATH:#{node.apache_hadoop.base_dir}/bin:#{node.presto.base_dir}/bin"
+  value "$PATH:#{node.hops.base_dir}/bin:#{node.presto.base_dir}/bin"
 end
 
 file "#{node.presto.base_dir}/etc/node.properties" do

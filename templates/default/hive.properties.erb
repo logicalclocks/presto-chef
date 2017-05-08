@@ -1,6 +1,6 @@
 connector.name=hive
 hive.metastore.uri=thrift://<%= @hive_metastore_endpoint %>
-hive.config.resources=<%= node.apache_hadoop.conf_dir %>/core-site.xml,<%= node.apache_hadoop.conf_dir %>/hdfs-site.xml
+hive.config.resources=<%= node.hops.conf_dir %>/core-site.xml,<%= node.hops.conf_dir %>/hdfs-site.xml
 -DHADOOP_USER_NAME=glassfish
 hive.force-local-scheduling=<%= node.presto.hive.force_local_scheduling %>
 hive.max-partitions-per-writers=<%= node.presto.hive.max_partitions_per_writers %>
