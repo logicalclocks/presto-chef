@@ -1,5 +1,8 @@
 dependencies: 
   - recipe: presto::install
+  - recipe: presto::localhost
+    global:
+      - hive2::metastore
   - recipe: presto::default
     global:  
       - hops::dn
