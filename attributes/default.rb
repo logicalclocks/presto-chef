@@ -51,5 +51,5 @@ default.presto.hive.hdfs.impersonation.enabled           = "true"
 
 #default.presto.coordinator.public_ips                   = [''] 
 #default.presto.worker.public_ips                        = ['']
-default.presto.coordinator.private_ips                  = [''] 
-default.presto.worker.private_ips                       = ['']
+#default.presto.coordinator.private_ips                  = [''] 
+#default.presto.worker.private_ips                       = ['']
