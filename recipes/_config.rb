@@ -4,7 +4,15 @@ nn_endpoint = private_recipe_ip("hops", "nn") + ":#{node.hops.nn.port}"
 
 mysql_endpoint = private_recipe_ip("ndb", "mysqld") + ":#{node.ndb.mysql_port}"
 
-hive_metastore_endpoint = private_recipe_ip("hive2", "metastore") + ":#{node.hive2.metastore.port}"
+begin
+  metastore_ip = private_recipe_ip("hive2", "metastore")
+rescue
+  metastore_ip = private_recipe_ip("hive2", "default")
+  Chef::Log.warn "Using default ip for metastore (metastore service not defined in cluster definition (yml) file."
+end
+
+
+hive_metastore_endpoint = metastore_ip + ":#{node.hive2.metastore.port}"
 
 zk_ips = private_recipe_ips('kzookeeper', 'default')
 zk_endpoints = zk_ips.join(",")
