@@ -3,8 +3,8 @@ dependencies:
   - recipe: presto::localhost
     global:
       - hive2::metastore
+      - hive2::default
   - recipe: presto::default
     global:  
-      - hops::dn
-      - hops::nm
       - hive2::metastore
+      - hive2::default
