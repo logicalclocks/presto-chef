@@ -23,8 +23,8 @@ end
 
 
 directory node.presto.dir do
-  owner node.hops.hdfs.user
-  group node.hops.group
+  owner node.presto.user
+  group node.presto.group
   mode "775"
   action :create
   not_if { File.directory?("#{node.presto.dir}") }
