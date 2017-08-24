@@ -65,6 +65,7 @@ bash 'extract-presto' do
                 ln -s #{node.presto.home} #{node.presto.base_dir}
                 chown -R #{node.presto.user}:#{node.presto.group} #{node.presto.home}
                 chown -R #{node.presto.user}:#{node.presto.group} #{node.presto.base_dir}
+                chmod 750 #{node.presto.home}
                 touch #{presto_downloaded}
                 chown -R #{node.presto.user}:#{node.presto.group} #{presto_downloaded}
         EOH
